@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs><linearGradient id="sky68753" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dcc4"/><stop offset="1" stop-color="#eaa97e"/></linearGradient></defs>
+  <rect width="800" height="1000" fill="url(#sky68753)"/>
+  <circle cx="560" cy="300" r="90" fill="#fff1dc"/>
+  <path d="M0 680 C 144 620, 304 700, 448 640 S 704 700, 800 650 L800 1000 L0 1000 Z" fill="#c07a5e"/>
+  <path d="M0 840 C 200 780, 384 880, 560 820 S 736 860, 800 830 L800 1000 L0 1000 Z" fill="#8a4f3e"/>
+  <text x="400" y="930" font-family="Georgia, serif" font-size="40" fill="#ffffff" fill-opacity="0.72" text-anchor="middle">PHOTO 01</text>
+  <text x="400" y="968" font-family="Georgia, serif" font-size="22" fill="#ffffff" fill-opacity="0.55" text-anchor="middle">占位图 · 替换我</text>
+</svg>

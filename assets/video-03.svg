@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <defs><linearGradient id="sky78763" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3d8c8"/><stop offset="1" stop-color="#f1e9dd"/></linearGradient></defs>
+  <rect width="1280" height="720" fill="url(#sky78763)"/>
+  <circle cx="420" cy="230" r="75" fill="#ffffff"/>
+  <path d="M0 490 C 230 446, 486 504, 717 461 S 1126 504, 1280 468 L1280 720 L0 720 Z" fill="#a8967f"/>
+  <path d="M0 605 C 320 562, 614 634, 896 590 S 1178 619, 1280 598 L1280 720 L0 720 Z" fill="#6f6354"/>
+  <text x="640" y="650" font-family="Georgia, serif" font-size="64" fill="#ffffff" fill-opacity="0.72" text-anchor="middle">VIDEO 03</text>
+  <text x="640" y="688" font-family="Georgia, serif" font-size="35" fill="#ffffff" fill-opacity="0.55" text-anchor="middle">视频封面 · 替换我</text>
+</svg>

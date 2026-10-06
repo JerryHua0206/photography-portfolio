@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>你的名字 · 影像作品集 | Your Name · Visual Portfolio</title>
+  <meta name="description" content="AP 国际生影像作品集：摄影与视频作品，申请南加州大学（USC）。" />
+
+  <!-- 字体：英文用 Inter / Cormorant，中文用 Noto Sans SC / Noto Serif SC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="app">
+  <!-- ============ 顶部导航 ============ -->
+  <!-- 固定导航：滚动后通过 JS 加 .scrolled 变成实底 -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <!-- 站点标志：把"你的名字"改成你的英文名/拼音 -->
+      <a href="#home" class="nav__logo">华嘉言<span class="nav__logo-en"> / Jerry</span></a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="#about" data-i18n="nav.about">关于我</a>
+        <a href="#journey" data-i18n="nav.journey">影像之路</a>
+        <a href="#photography" data-i18n="nav.photo">摄影作品</a>
+        <a href="#video" data-i18n="nav.video">视频作品</a>
+        <a href="#contact" data-i18n="nav.contact">联系我</a>
+      </nav>
+
+      <div class="nav__right">
+        <!-- 深色 / 浅色 主题切换 -->
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">深色</button>
+        <!-- 中 / EN 语言切换按钮 -->
+        <button class="lang-toggle" id="langToggle" aria-label="切换语言">EN</button>
+        <!-- 移动端汉堡菜单（手机上才显示） -->
+        <button class="hamburger" id="hamburger" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 首屏 Hero · 全屏自动轮播封面 ============ -->
+    <section class="hero" id="home">
+      <!-- 把每个 .hero__slide 的 background-image 换成你的代表作即可（建议 6 张以内） -->
+      <div class="hero__slides">
+        <div class="hero__slide is-active" style="background-image:url('assets/photos/hero/hero-01.jpg')"></div>
+        <div class="hero__slide hero__slide--nozoom" style="background-image:url('assets/photos/hero/hero-02.jpg')"></div>
+        <div class="hero__slide hero__slide--nozoom" style="background-image:url('assets/photos/hero/hero-03.jpg')"></div>
+        <div class="hero__slide" style="background-image:url('assets/photos/hero/hero-04.jpg')"></div>
+        <div class="hero__slide" style="background-image:url('assets/photos/hero/hero-05.jpg')"></div>
+        <div class="hero__slide" style="background-image:url('assets/photos/hero/hero-06.jpg')"></div>
+      </div>
+      <div class="hero__scrim"></div>
+
+      <div class="hero__content">
+        <h1 class="hero__title" data-i18n="hero.title">华嘉言的摄影作品集</h1>
+        <p class="hero__subtitle" data-i18n="hero.subtitle">影像创造者</p>
+      </div>
+
+      <a href="#about" class="hero__scroll" data-i18n="hero.scroll">向下滚动 ↓</a>
+
+      <!-- 极简轮播控件：计数器 / 圆点 / 进度条 -->
+      <div class="hero__footer">
+        <span class="hero__counter"><span id="heroIndex">01</span> / 06</span>
+        <div class="hero__dots">
+          <button class="hero__dot is-active" aria-label="第 1 张"></button>
+          <button class="hero__dot" aria-label="第 2 张"></button>
+          <button class="hero__dot" aria-label="第 3 张"></button>
+          <button class="hero__dot" aria-label="第 4 张"></button>
+          <button class="hero__dot" aria-label="第 5 张"></button>
+          <button class="hero__dot" aria-label="第 6 张"></button>
+        </div>
+        <div class="hero__progress"><span class="hero__bar"></span></div>
+      </div>
+    </section>
+
+    <!-- ============ 关于我 ============ -->
+    <section class="section about" id="about">
+      <div class="container">
+        <h2 class="section__title reveal" data-i18n="about.title">关于我</h2>
+
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <!-- 这两段请替换成你真实的故事 -->
+            <p data-i18n="about.body1">我是……（在这里写你的故事：你从哪里来、为什么喜欢影像、你平时拍什么。）</p>
+            <p data-i18n="about.body2">目前就读 AP 项目，预计 2028 年毕业。我的梦想是进入加州的高校深造，最理想的目的地是南加州大学（USC）。</p>
+          </div>
+
+          <!-- 事实卡片：招生官一眼看到的关键信息 -->
+          <div class="about__facts reveal">
+            <div class="fact">
+              <span class="fact__label" data-i18n="about.school.label">学校</span>
+              <span class="fact__value" data-i18n="about.school.value">广东碧桂园学校</span>
+            </div>
+            <div class="fact">
+              <span class="fact__label" data-i18n="about.shoot.label">摄影</span>
+              <span class="fact__value" data-i18n="about.shoot.value">自学 · 2020 起</span>
+            </div>
+            <div class="fact">
+              <span class="fact__label" data-i18n="about.major.label">专业</span>
+              <span class="fact__value" data-i18n="about.major.value">传媒 / 经济（待定）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 影像之路 · 互动时间线 ============ -->
+    <section class="section journey" id="journey">
+      <div class="container">
+        <h2 class="section__title reveal" data-i18n="journey.title">影像之路</h2>
+        <p class="section__intro reveal" data-i18n="journey.intro">点击下方时间线的节点，看看我每一步是怎么走过来的。</p>
+
+        <div class="timeline reveal">
+          <div class="timeline__nav" id="timelineNav">
+            <span class="timeline__progress" id="timelineProgress"></span>
+            <!-- 节点由 JS 生成 -->
+          </div>
+          <div class="timeline__panel" id="timelinePanel">
+            <div class="timeline__media">
+              <div class="timeline__frame">
+                <img id="journeyImg" src="" alt="" />
+              </div>
+              <div class="timeline__thumbs" id="journeyThumbs"></div>
+            </div>
+            <div class="timeline__body">
+              <span class="timeline__year" id="journeyYear"></span>
+              <h3 class="timeline__heading" id="journeyHeading"></h3>
+              <p class="timeline__text" id="journeyText"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 摄影作品 ============ -->
+    <section class="section photography" id="photography">
+      <div class="container">
+        <h2 class="section__title reveal" data-i18n="photo.title">摄影作品</h2>
+        <p class="section__intro reveal" data-i18n="photo.intro">镜头是我观察世界的方式。下面是一些我用相机记录的片段。</p>
+
+        <!-- 摄影作品：折叠手风琴分板块（自然风景/城市风景/街拍人文/端午龙舟/其他）。
+             由 js/main.js 的 galleryData 渲染；之后在 galleryData 对应分类里填真实照片即可 -->
+        <div class="accordion reveal" id="galleryAccordion"></div>
+      </div>
+    </section>
+
+    <!-- ============ 视频作品（重点篇幅） ============ -->
+    <section class="section video" id="video">
+      <div class="container">
+        <h2 class="section__title reveal" data-i18n="video.title">视频作品</h2>
+        <p class="section__intro reveal" data-i18n="video.intro">相比静态照片，我更擅长用动态影像讲故事——从学校宣传片到个人活动纪录片。</p>
+
+        <!-- 学校活动宣传 -->
+        <div class="video-group reveal">
+          <h3 class="video-group__title" data-i18n="video.group.promo">学校活动宣传</h3>
+          <div class="video-grid">
+            <div class="video-card" data-video="promo">
+              <img class="video-card__poster" src="assets/video-01.svg" alt="学校宣传片封面" />
+              <button class="video-card__play" aria-label="播放">▶</button>
+            </div>
+            <div class="video-card" data-video="promo">
+              <img class="video-card__poster" src="assets/video-01.svg" alt="学校宣传片封面" />
+              <button class="video-card__play" aria-label="播放">▶</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 纪录片 -->
+        <div class="video-group reveal">
+          <h3 class="video-group__title" data-i18n="video.group.doc">纪录片</h3>
+          <div class="video-grid">
+            <div class="video-card" data-video="doc">
+              <img class="video-card__poster" src="assets/video-02.svg" alt="活动纪录片封面" />
+              <button class="video-card__play" aria-label="播放">▶</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 跨年片（2022–2025） -->
+        <div class="video-group reveal">
+          <h3 class="video-group__title" data-i18n="video.group.newyear">跨年片</h3>
+          <p class="video-group__note" data-i18n="video.newyear.note">从 2022 年起，每年一部，总结这一年的影像。</p>
+          <div class="newyear-row">
+            <div class="video-card video-card--year" data-video="ny-2022">
+              <img class="video-card__poster" src="assets/video-03.svg" alt="2022 跨年片" />
+              <button class="video-card__play" aria-label="播放 2022">▶</button>
+              <span class="video-card__caption">2022</span>
+            </div>
+            <div class="video-card video-card--year" data-video="ny-2023">
+              <img class="video-card__poster" src="assets/video-03.svg" alt="2023 跨年片" />
+              <button class="video-card__play" aria-label="播放 2023">▶</button>
+              <span class="video-card__caption">2023</span>
+            </div>
+            <div class="video-card video-card--year" data-video="ny-2024">
+              <img class="video-card__poster" src="assets/video-03.svg" alt="2024 跨年片" />
+              <button class="video-card__play" aria-label="播放 2024">▶</button>
+              <span class="video-card__caption">2024</span>
+            </div>
+            <div class="video-card video-card--year" data-video="ny-2025">
+              <img class="video-card__poster" src="assets/video-03.svg" alt="2025 跨年片" />
+              <button class="video-card__play" aria-label="播放 2025">▶</button>
+              <span class="video-card__caption">2025</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 联系我 ============ -->
+    <section class="section contact" id="contact">
+      <div class="container contact__inner">
+        <h2 class="section__title reveal" data-i18n="contact.title">联系我</h2>
+        <p class="section__intro reveal" data-i18n="contact.text">欢迎招生官、老师或合作者通过以下方式联系我。</p>
+
+        <div class="contact__links reveal">
+          <!-- 把邮箱换成你的真实邮箱 -->
+          <a class="contact__link" href="mailto:your.email@example.com" data-i18n="contact.email">邮箱</a>
+          <!-- 把 # 换成你的社媒主页 -->
+          <a class="contact__link" href="#" target="_blank" rel="noopener">Instagram</a>
+          <a class="contact__link" href="#" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 页脚 ============ -->
+  <footer class="footer">
+    <p data-i18n="footer">© 2026 你的名字. 保留所有权利。</p>
+  </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# 原始素材副本（非网站文件）
+2023/
+Main_Cover/
+
+# 开发工具脚本
+tools/
+
+# 项目内部记忆（含个人笔记，勿发布）
+.workbuddy-ai/
+
+# 系统文件
+.DS_Store
+Thumbs.db
