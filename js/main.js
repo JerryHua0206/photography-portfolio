@@ -286,7 +286,7 @@ const journeyPhases = [
       t.type = "button";
       t.className = "timeline__thumb" + (idx === 0 ? " is-active" : "");
       t.setAttribute("aria-label", "查看第 " + (idx + 1) + " 张");
-      t.innerHTML = '<img src="' + thumbSrc + '" alt="" loading="lazy" />';
+      t.innerHTML = '<img src="' + thumbSrc + '" data-full="' + src + '" alt="" loading="lazy" onerror="this.onerror=null;this.src=this.getAttribute(\'data-full\');" />';
       t.addEventListener("click", () => {
         setMainImage(src, alt);
         thumbsEl.querySelectorAll(".timeline__thumb")

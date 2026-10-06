@@ -278,10 +278,20 @@ body, .nav, .nav.scrolled, .section, .fact, .contact, .contact__link,
 }
 .timeline__media { flex: 0 0 340px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
 .timeline__frame {
-  border-radius: 12px; overflow: hidden; aspect-ratio: 4 / 3;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 75%;   /* 4:3，永远不受内层图片影响 */
+  overflow: hidden;
+  border-radius: 12px;
   background: var(--line);
 }
-.timeline__frame img { width: 100%; height: 100%; object-fit: cover; transform-origin: center; }
+.timeline__frame img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform-origin: center;
+}
 .timeline__thumbs { display: flex; gap: 8px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
 .timeline__thumb {
   flex: 0 0 auto; width: 74px; height: 56px; padding: 0; border: 2px solid transparent;
