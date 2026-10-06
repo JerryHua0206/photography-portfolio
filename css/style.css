@@ -309,6 +309,8 @@ body, .nav, .nav.scrolled, .section, .fact, .contact, .contact__link,
 
 @media (max-width: 760px) {
   .timeline { grid-template-columns: 1fr; gap: 22px; }
+  /* 修复 flex 子项 min-width:auto 导致面板被缩略图固有宽撑出视口（2023 等多图年份） */
+  .timeline__panel, .timeline__media, .timeline__body { min-width: 0; }
   /* 移动端：时间轴竖线居中于屏幕，年份节点居中其上；图片+文字在其下方 */
   .timeline__nav { margin-left: 0; border-left: none; align-items: center; }
   .timeline__nav::before {
