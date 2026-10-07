@@ -245,8 +245,8 @@ const journeyPhases = [
       "assets/photos/journey/nature/nature-08.jpg",
       "assets/photos/journey/nature/nature-09.jpg"
     ],
-    zh: { label: "自然风景", heading: "自然 · 旅途风景", text: "2024 年，旅行让我把镜头带向远方的自然。如今拍得少了，但每一张旅途风景都更克制、更珍惜。" },
-    en: { label: "Nature", heading: "Nature · Travel landscapes", text: "From 2024 on, travel carried my lens toward distant nature. I shoot less now, but every travel landscape feels more restrained and more cherished." }
+    zh: { label: "视频·旅拍", heading: "视频·旅途风景", text: "2024 年步入高中之后，属于自己的空余时间慢慢变少，日常记录的时光也随之变得零碎。自 2024 往后，我将更多重心放在剪辑创作上。唯一的拍摄会挤在旅游时，用旅拍素材制作混剪短片。" },
+    en: { label: "Video · Travel", heading: "Video · Travel landscapes", text: "After entering high school in 2024, my free time gradually shrank and the everyday moments I used to capture became more scattered. From 2024 onward, I shifted more focus to video editing. The only photography I still do squeezes in during travel — using travel footage to craft cinematic short films." }
   }
 ];
 
