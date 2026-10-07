@@ -290,6 +290,8 @@ body, .nav, .nav.scrolled, .section, .fact, .contact, .contact__link,
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
+  /* 默认锚定底部：竖图也能露出主体（摄影师 / 前景），不会被居中裁切掉 */
+  object-position: center bottom;
   transform-origin: center;
 }
 .timeline__thumbs { display: flex; gap: 8px; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }

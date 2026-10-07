@@ -234,7 +234,17 @@ const journeyPhases = [
   },
   {
     id: "nature", year: { zh: "2024往后", en: "2024 onward" },
-    images: ["assets/photo-02.svg", "assets/photo-03.svg", "assets/photo-04.svg"],
+    images: [
+      "assets/photos/journey/nature/nature-01.jpg",
+      "assets/photos/journey/nature/nature-02.jpg",
+      "assets/photos/journey/nature/nature-03.jpg",
+      "assets/photos/journey/nature/nature-04.jpg",
+      "assets/photos/journey/nature/nature-05.jpg",
+      "assets/photos/journey/nature/nature-06.jpg",
+      "assets/photos/journey/nature/nature-07.jpg",
+      "assets/photos/journey/nature/nature-08.jpg",
+      "assets/photos/journey/nature/nature-09.jpg"
+    ],
     zh: { label: "自然风景", heading: "自然 · 旅途风景", text: "2024 年，旅行让我把镜头带向远方的自然。如今拍得少了，但每一张旅途风景都更克制、更珍惜。" },
     en: { label: "Nature", heading: "Nature · Travel landscapes", text: "From 2024 on, travel carried my lens toward distant nature. I shoot less now, but every travel landscape feels more restrained and more cherished." }
   }
