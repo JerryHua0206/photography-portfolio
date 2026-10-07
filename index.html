@@ -145,9 +145,8 @@
         <h2 class="section__title reveal" data-i18n="photo.title">摄影作品</h2>
         <p class="section__intro reveal" data-i18n="photo.intro">镜头是我观察世界的方式。下面是一些我用相机记录的片段。</p>
 
-        <!-- 摄影作品：折叠手风琴分板块（自然风景/城市风景/街拍人文/端午龙舟/其他）。
-             由 js/main.js 的 galleryData 渲染；之后在 galleryData 对应分类里填真实照片即可 -->
-        <div class="accordion reveal" id="galleryAccordion"></div>
+        <!-- 摄影作品：五大板块做成可点击模块，点击跳转到 gallery.html?cat=<id> 单独页面 -->
+        <div class="gallery-modules" id="galleryModules"></div>
       </div>
     </section>
 
@@ -236,6 +235,7 @@
   </footer>
   </div>
 
+  <script src="js/gallery-data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

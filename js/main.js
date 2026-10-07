@@ -31,6 +31,9 @@ const i18n = {
     "photo.cat.street": "街拍人文",
     "photo.cat.dragon": "端午节龙舟专区",
     "photo.cat.others": "其他",
+    "photo.view": "查看作品",
+    "photo.back": "返回作品",
+    "photo.allPhotos": "以下为该分类的全部照片。",
     "video.title": "视频作品",
     "video.intro": "相比静态照片，我更擅长用动态影像讲故事——学校活动宣传、纪录片，以及从 2022 年起每年一部、记录全年的跨年片。",
     "video.group.promo": "学校活动宣传",
@@ -73,6 +76,9 @@ const i18n = {
     "photo.cat.street": "Street & People",
     "photo.cat.dragon": "Dragon Boat Festival",
     "photo.cat.others": "Others",
+    "photo.view": "View works",
+    "photo.back": "Back to works",
+    "photo.allPhotos": "All photos in this category.",
     "video.title": "Videography",
     "video.intro": "More than stills, I tell stories through moving images — school promos, documentaries, and a year-in-review film I've made every year since 2022.",
     "video.group.promo": "School Promos",
@@ -147,10 +153,14 @@ applyTheme(localStorage.getItem("theme") || "light");
 const nav = document.getElementById("nav");
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.getElementById("navLinks");
+// 没有 hero 的页面（如 gallery.html）始终保持实底导航，避免白底白字
+const hasHero = !!document.querySelector(".hero");
 
-window.addEventListener("scroll", () => {
-  nav.classList.toggle("scrolled", window.scrollY > 60);
-});
+function updateNav() {
+  nav.classList.toggle("scrolled", hasHero ? window.scrollY > 60 : true);
+}
+updateNav();
+window.addEventListener("scroll", updateNav);
 
 hamburger.addEventListener("click", () => navLinks.classList.toggle("open"));
 
@@ -329,87 +339,35 @@ const journeyPhases = [
 })();
 
 /* =========================================================
-   9) 摄影作品 · 折叠手风琴分板块
-   板块：自然风景 / 城市风景 / 街拍人文 / 端午节龙舟专区 / 其他。
-   - 自然风景、城市风景之后会按「城市」再分子类（groups 里的 city 字段，配合 i18n photo.city.<id>）。
-   - 填真实照片：在 galleryData 对应分类/城市的 images 数组里换成你的图片路径即可。
+   9) 摄影作品 · 分类模块（点击跳转到 gallery.html 单独页面）
+   五大板块：自然风景 / 城市风景 / 街拍人文 / 端午节龙舟 / 其他。
+   点击任意模块 → gallery.html?cat=<id>，只展示该分类照片。
+   之后在 js/gallery-data.js 的 GALLERY_DATA 对应分类里填真实照片即可（城市子类用 groups[].city）。
    ========================================================= */
-const galleryData = [
-  { id: "nature", groups: [ { city: null, images: ["assets/photo-01.svg", "assets/photo-02.svg"] } ] },
-  { id: "city",   groups: [ { city: null, images: ["assets/photo-03.svg", "assets/photo-04.svg"] } ] },
-  { id: "street", groups: [ { city: null, images: ["assets/photo-05.svg", "assets/photo-06.svg"] } ] },
-  { id: "dragon", groups: [ { city: null, images: ["assets/photo-01.svg", "assets/photo-02.svg"] } ] },
-  { id: "others", groups: [ { city: null, images: ["assets/photo-03.svg"] } ] }
-];
-
-const galleryAccordion = document.getElementById("galleryAccordion");
-let galleryOpen = galleryData[0].id;
-
-function renderGallery(lang) {
-  if (!galleryAccordion) return;
+const galleryModulesEl = document.getElementById("galleryModules");
+function renderGalleryModules(lang) {
+  if (!galleryModulesEl) return;
   const L = lang || document.documentElement.lang || "zh";
-  galleryAccordion.innerHTML = "";
-  galleryData.forEach((cat) => {
-    const title = (i18n[L] && i18n[L]["photo.cat." + cat.id]) || cat.id;
-    const isOpen = cat.id === galleryOpen;
-    const item = document.createElement("div");
-    item.className = "accordion__item" + (isOpen ? " is-open" : "");
-
-    const head = document.createElement("button");
-    head.type = "button";
-    head.className = "accordion__head";
-    head.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    head.innerHTML =
-      '<span class="accordion__title">' + title + '</span>' +
-      '<span class="accordion__icon"></span>';
-    head.addEventListener("click", () => {
-      galleryOpen = isOpen ? null : cat.id;
-      renderGallery(L);
-    });
-    item.appendChild(head);
-
-    const panel = document.createElement("div");
-    panel.className = "accordion__panel";
-    const inner = document.createElement("div");
-    inner.className = "accordion__inner";
-    cat.groups.forEach((g) => {
-      if (g.city) {
-        const sub = document.createElement("h4");
-        sub.className = "accordion__subtitle";
-        sub.textContent = (i18n[L] && i18n[L]["photo.city." + g.city]) || g.city;
-        inner.appendChild(sub);
-      }
-      const grid = document.createElement("div");
-      grid.className = "gallery";
-      g.images.forEach((src, i) => {
-        const fig = document.createElement("figure");
-        fig.className = "gallery__item";
-        const im = document.createElement("img");
-        im.src = src;
-        im.alt = title + " " + (i + 1);
-        im.loading = "lazy";
-        fig.appendChild(im);
-        grid.appendChild(fig);
-      });
-      inner.appendChild(grid);
-    });
-    panel.appendChild(inner);
-    item.appendChild(panel);
-    galleryAccordion.appendChild(item);
-    if (isOpen) panel.style.maxHeight = panel.scrollHeight + "px";
+  galleryModulesEl.innerHTML = "";
+  GALLERY_DATA.forEach((cat) => {
+    const title = (GALLERY_I18N[L] && GALLERY_I18N[L][cat.id]) || cat.id;
+    const cover = (cat.groups[0] && cat.groups[0].images[0]) || "";
+    const view = (i18n[L] && i18n[L]["photo.view"]) || "查看作品";
+    const a = document.createElement("a");
+    a.className = "gallery-module";
+    a.href = "gallery.html?cat=" + encodeURIComponent(cat.id);
+    a.innerHTML =
+      '<div class="gallery-module__cover"><img src="' + cover + '" alt="' + title + '" loading="lazy" /></div>' +
+      '<div class="gallery-module__body">' +
+        '<h3 class="gallery-module__title">' + title + '</h3>' +
+        '<span class="gallery-module__more">' + view + ' →</span>' +
+      '</div>';
+    galleryModulesEl.appendChild(a);
   });
 }
 
-renderGallery(document.documentElement.lang || "zh");
-
-// 窗口尺寸变化后重算展开面板高度
-window.addEventListener("resize", () => {
-  const openPanel = galleryAccordion.querySelector(".accordion__item.is-open .accordion__panel");
-  if (openPanel) openPanel.style.maxHeight = openPanel.scrollHeight + "px";
-});
-
-// 语言切换时同步刷新摄影手风琴（标题 + 城市子类）
-langToggle.addEventListener("click", () => renderGallery(document.documentElement.lang || "zh"));
+renderGalleryModules(document.documentElement.lang || "zh");
+langToggle.addEventListener("click", () => renderGalleryModules(document.documentElement.lang || "zh"));
 
 /* =========================================================
    7) 封面全屏轮播（方向 C）

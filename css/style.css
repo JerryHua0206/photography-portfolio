@@ -349,20 +349,91 @@ body, .nav, .nav.scrolled, .section, .fact, .contact, .contact__link,
 .gallery__item img { width: 100%; transition: transform .5s ease; }
 .gallery__item:hover img { transform: scale(1.04); }
 
-/* 摄影作品 · 折叠手风琴分板块 */
-.accordion { margin-top: 36px; }
-.accordion__item { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 14px; overflow: hidden; background: var(--surface); transition: border-color .3s ease; }
-.accordion__item.is-open { border-color: var(--accent); }
-.accordion__head { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: none; border: none; cursor: pointer; font-family: var(--serif); font-size: clamp(1.15rem, 2.5vw, 1.4rem); font-weight: 600; color: var(--ink); text-align: left; }
-.accordion__icon { position: relative; width: 16px; height: 16px; flex: 0 0 auto; }
-.accordion__icon::before, .accordion__icon::after { content: ""; position: absolute; background: var(--accent); transition: transform .3s ease, opacity .3s ease; }
-.accordion__icon::before { top: 7px; left: 0; width: 16px; height: 2px; }
-.accordion__icon::after { left: 7px; top: 0; width: 2px; height: 16px; }
-.accordion__item.is-open .accordion__icon::after { transform: scaleY(0); opacity: 0; }
-.accordion__panel { max-height: 0; overflow: hidden; transition: max-height .45s ease; }
-.accordion__inner { padding: 4px 24px 26px; }
-.accordion__subtitle { font-family: var(--sans); font-size: .82rem; letter-spacing: 1.5px; color: var(--muted); margin: 18px 0 12px; text-transform: uppercase; }
-.accordion__inner .gallery { margin-top: 4px; }
+/* 摄影作品 · 分类模块卡片（点击跳转到 gallery.html 单独页面） */
+.gallery-modules {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 36px;
+}
+.gallery-module {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform .4s cubic-bezier(.22,.61,.36,1), box-shadow .4s ease, border-color .4s ease;
+}
+.gallery-module:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  border-color: var(--accent);
+}
+.gallery-module__cover {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 66%;   /* 封面 3:2 比例，永远不受内层图片影响 */
+  overflow: hidden;
+  background: var(--line);
+}
+.gallery-module__cover img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+.gallery-module:hover .gallery-module__cover img { transform: scale(1.06); }
+.gallery-module__body {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 18px 20px;
+}
+.gallery-module__title { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; letter-spacing: .5px; }
+.gallery-module__more { font-size: .88rem; color: var(--accent); letter-spacing: .5px; white-space: nowrap; }
+@media (max-width: 860px) { .gallery-modules { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .gallery-modules { grid-template-columns: 1fr; } }
+
+/* 摄影作品 · 分类相册详情页（gallery.html） */
+.gallery-page { padding-top: 140px; }
+.gallery-back {
+  display: inline-block; margin-bottom: 22px;
+  font-size: .9rem; letter-spacing: .5px; color: var(--muted);
+  text-decoration: none; transition: color .3s ease;
+}
+.gallery-back:hover { color: var(--accent); }
+.gallery__group {
+  font-family: var(--sans); font-size: .82rem; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--accent);
+  margin: 28px 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+.gallery__group:first-of-type { margin-top: 8px; }
+.gallery__item { animation: fadeUp .6s ease both; cursor: zoom-in; }
+.gallery-notfound { color: var(--muted); margin-top: 24px; }
+.gallery-notfound a { color: var(--accent); }
+
+/* 灯箱：点击照片查看大图 */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(10,8,6,.92); padding: 40px; cursor: zoom-out;
+}
+.lightbox.is-open { display: flex; animation: fadeIn .3s ease; }
+.lightbox__img {
+  max-width: 100%; max-height: 100%;
+  border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  object-fit: contain;
+}
+.lightbox__hint {
+  position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,.7); font-size: .8rem; letter-spacing: 1px;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 860px) {
+  .gallery-page { padding-top: 110px; }
+}
 
 /* =========================================================
    视频作品

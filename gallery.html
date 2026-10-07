@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>摄影作品 · Jerry</title>
+  <meta name="description" content="华嘉言的摄影作品集 · 分类相册" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="app">
+  <!-- ============ 顶部导航（与首页一致，链接回首页各板块） ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html#home" class="nav__logo">华嘉言<span class="nav__logo-en"> / Jerry</span></a>
+
+      <nav class="nav__links" id="navLinks">
+        <a href="index.html#about" data-i18n="nav.about">关于我</a>
+        <a href="index.html#journey" data-i18n="nav.journey">影像之路</a>
+        <a href="index.html#photography" data-i18n="nav.photo">摄影作品</a>
+        <a href="index.html#video" data-i18n="nav.video">视频作品</a>
+        <a href="index.html#contact" data-i18n="nav.contact">联系我</a>
+      </nav>
+
+      <div class="nav__right">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">深色</button>
+        <button class="lang-toggle" id="langToggle" aria-label="切换语言">EN</button>
+        <button class="hamburger" id="hamburger" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 分类相册 ============ -->
+    <section class="section gallery-page" id="gallery">
+      <div class="container">
+        <a class="gallery-back" href="index.html#photography" data-i18n="photo.back">返回作品</a>
+
+        <h2 class="section__title" id="galleryTitle">摄影作品</h2>
+        <p class="section__intro" id="galleryIntro"></p>
+
+        <!-- 该分类的全部照片（由 js/gallery.js 按 ?cat=<id> 渲染；支持按城市分子类） -->
+        <div class="gallery" id="galleryGrid"></div>
+
+        <!-- 找不到分类时的提示 -->
+        <p class="gallery-notfound" id="galleryNotFound" style="display:none">
+          未找到该分类。<a href="index.html#photography">返回摄影作品</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ 页脚 ============ -->
+  <footer class="footer">
+    <p data-i18n="footer">© 2026 你的名字. 保留所有权利。</p>
+  </footer>
+  </div>
+
+  <!-- ============ 点击查看大图 的灯箱 ============ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+    <span class="lightbox__hint">点击任意处关闭</span>
+  </div>
+
+  <!-- 共享脚本：i18n / 主题 / 语言 / 导航（main.js 对首页专属模块做了缺失保护，可在本页安全复用） -->
+  <script src="js/gallery-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>
