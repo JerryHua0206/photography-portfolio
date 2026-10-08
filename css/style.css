@@ -400,11 +400,24 @@ body, .nav, .nav.scrolled, .section, .fact, .contact, .contact__link,
 /* 摄影作品 · 分类相册详情页（gallery.html） */
 .gallery-page { padding-top: 140px; }
 .gallery-back {
-  display: inline-block; margin-bottom: 22px;
-  font-size: .9rem; letter-spacing: .5px; color: var(--muted);
-  text-decoration: none; transition: color .3s ease;
+  display: inline-flex; align-items: center; gap: .5em;
+  margin-bottom: 44px; padding: 10px 20px;
+  font-size: .88rem; letter-spacing: .5px; font-weight: 500; color: var(--muted);
+  text-decoration: none; background: transparent;
+  border: 1px solid var(--line); border-radius: 999px;
+  transition: color .3s ease, border-color .3s ease, background .3s ease, transform .3s ease, box-shadow .3s ease;
 }
-.gallery-back:hover { color: var(--accent); }
+.gallery-back::before {
+  content: "\2190"; font-size: 1.05em; line-height: 1;
+  transition: transform .3s ease;
+}
+.gallery-back:hover {
+  color: var(--accent); border-color: var(--accent);
+  background: rgba(192,98,60,.07);
+  box-shadow: 0 4px 14px rgba(192,98,60,.12);
+  transform: translateX(-2px);
+}
+.gallery-back:hover::before { transform: translateX(-3px); }
 .gallery__group {
   font-family: var(--sans); font-size: .82rem; letter-spacing: 1.5px;
   text-transform: uppercase; color: var(--accent);
