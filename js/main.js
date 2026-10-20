@@ -33,6 +33,7 @@ const i18n = {
     "photo.cat.others": "其他",
     "photo.view": "查看作品",
     "photo.back": "返回作品",
+    "photo.all": "全部",
     "photo.allPhotos": "以下为该分类的全部照片。",
     "video.title": "视频作品",
     "video.intro": "相比静态照片，我更擅长用动态影像讲故事——学校活动宣传、纪录片，以及从 2022 年起每年一部、记录全年的跨年片。",
@@ -78,6 +79,7 @@ const i18n = {
     "photo.cat.others": "Others",
     "photo.view": "View works",
     "photo.back": "Back to works",
+    "photo.all": "All",
     "photo.allPhotos": "All photos in this category.",
     "video.title": "Videography",
     "video.intro": "More than stills, I tell stories through moving images — school promos, documentaries, and a year-in-review film I've made every year since 2022.",
@@ -94,6 +96,7 @@ const i18n = {
     "footer": "© 2026 Jerry. All rights reserved."
   }
 };
+window.i18n = i18n;  // 暴露给 gallery.js 等共享脚本使用（t() 依赖 window.i18n）
 
 /* =========================================================
    2) 语言切换逻辑

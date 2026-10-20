@@ -428,6 +428,33 @@ body, .nav, .nav.scrolled, .section, .fact, .contact, .contact__link,
 .gallery-notfound { color: var(--muted); margin-top: 24px; }
 .gallery-notfound a { color: var(--accent); }
 
+/* 城市索引条（城市风景 / 自然风景 分类内按城市筛选） */
+.city-index {
+  display: flex; flex-wrap: wrap; gap: 6px 22px;
+  margin: 0 0 42px; padding: 0 0 16px; border-bottom: 1px solid var(--line);
+}
+.city-chip {
+  position: relative; appearance: none; background: none; border: 0;
+  padding: 4px 2px; cursor: pointer;
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 500;
+  color: var(--muted); letter-spacing: .5px; line-height: 1.2;
+  transition: color .3s ease;
+}
+.city-chip::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px;
+  height: 2px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left center;
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+}
+.city-chip:hover { color: var(--ink); }
+.city-chip:hover::after { transform: scaleX(.5); }
+.city-chip.is-active { color: var(--accent); }
+.city-chip.is-active::after { transform: scaleX(1); }
+
+/* 切换城市时网格淡出/淡入 */
+.gallery { transition: opacity .25s ease, transform .25s ease; }
+.gallery.is-switching { opacity: 0; transform: translateY(8px); }
+
 /* 灯箱：点击照片查看大图 */
 .lightbox {
   position: fixed; inset: 0; z-index: 200;
