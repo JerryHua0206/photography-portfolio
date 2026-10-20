@@ -428,28 +428,42 @@ body, .nav, .nav.scrolled, .section, .fact, .contact, .contact__link,
 .gallery-notfound { color: var(--muted); margin-top: 24px; }
 .gallery-notfound a { color: var(--accent); }
 
-/* 城市索引条（城市风景 / 自然风景 分类内按城市筛选） */
+/* 城市大图索引（城市风景 / 自然风景 分类内按城市筛选） */
 .city-index {
-  display: flex; flex-wrap: wrap; gap: 6px 22px;
-  margin: 0 0 42px; padding: 0 0 16px; border-bottom: 1px solid var(--line);
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px; margin: 0 0 48px;
 }
-.city-chip {
-  position: relative; appearance: none; background: none; border: 0;
-  padding: 4px 2px; cursor: pointer;
-  font-family: var(--serif); font-size: 1.2rem; font-weight: 500;
-  color: var(--muted); letter-spacing: .5px; line-height: 1.2;
-  transition: color .3s ease;
+.city-card {
+  position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+  padding: 0; cursor: pointer; border-radius: 10px; display: block;
+  background: var(--surface); border: 2px solid transparent;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  transition: transform .4s ease, box-shadow .4s ease, border-color .3s ease;
 }
-.city-chip::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -3px;
-  height: 2px; background: var(--accent);
-  transform: scaleX(0); transform-origin: left center;
-  transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+.city-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(0,0,0,.18); }
+.city-card__img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1);
 }
-.city-chip:hover { color: var(--ink); }
-.city-chip:hover::after { transform: scaleX(.5); }
-.city-chip.is-active { color: var(--accent); }
-.city-chip.is-active::after { transform: scaleX(1); }
+.city-card:hover .city-card__img { transform: scale(1.06); }
+.city-card__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,8,6,.62), rgba(10,8,6,.04) 55%);
+}
+.city-card__label {
+  position: absolute; left: 0; right: 0; bottom: 14px; text-align: center;
+  font-family: var(--serif); font-size: 1.55rem; font-weight: 600; color: #fff;
+  letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,.45);
+}
+.city-card.is-active { border-color: var(--accent); }
+/* 「全部」汇总卡片：无封面，渐变底 + 陶土色文字 */
+.city-card--all {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--surface), var(--line));
+}
+.city-card--all .city-card__label {
+  position: static; color: var(--accent); font-size: 1.4rem; text-shadow: none;
+}
 
 /* 切换城市时网格淡出/淡入 */
 .gallery { transition: opacity .25s ease, transform .25s ease; }

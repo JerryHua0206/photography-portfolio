@@ -44,6 +44,12 @@
     cat.groups.forEach((g) => { if (g.city && !seen.includes(g.city)) seen.push(g.city); });
     return seen;
   }
+  // 某城市的封面图（取该城市第一张照片）
+  function coverFor(cityId) {
+    if (!cat) return null;
+    const g = cat.groups.find((x) => x.city === cityId);
+    return g && g.images && g.images.length ? g.images[0] : null;
+  }
 
   function renderGrid() {
     if (!cat || !gridEl) { if (gridEl) gridEl.innerHTML = ""; return; }
@@ -86,19 +92,24 @@
     if (introEl) introEl.textContent = t("photo.allPhotos", "");
     if (notFoundEl) notFoundEl.style.display = "none";
 
-    // 城市索引条：仅当该分类含多座城市时出现
+    // 城市大图索引：仅当该分类含多座城市时出现
     const cities = citiesInCat();
     if (indexEl) {
       if (cities.length > 1) {
-        let chips = '<button class="city-chip' + (activeCity === "all" ? " is-active" : "") +
-          '" data-city="all">' + t("photo.all", "All") + "</button>";
+        let cards = '<button class="city-card city-card--all' + (activeCity === "all" ? " is-active" : "") +
+          '" data-city="all"><span class="city-card__label">' + t("photo.all", "All") + "</span></button>";
         cities.forEach((c) => {
-          chips += '<button class="city-chip' + (c === activeCity ? " is-active" : "") +
-            '" data-city="' + c + '">' + cityName(c) + "</button>";
+          const cover = coverFor(c);
+          cards += '<button class="city-card' + (c === activeCity ? " is-active" : "") +
+            '" data-city="' + c + '">' +
+            (cover ? '<img class="city-card__img" src="' + cover + '" alt="' + cityName(c) + '" loading="lazy">' : "") +
+            '<span class="city-card__overlay"></span>' +
+            '<span class="city-card__label">' + cityName(c) + "</span>" +
+            "</button>";
         });
-        indexEl.innerHTML = chips;
-        indexEl.style.display = "flex";
-        indexEl.querySelectorAll(".city-chip").forEach((btn) => {
+        indexEl.innerHTML = cards;
+        indexEl.style.display = "grid";
+        indexEl.querySelectorAll(".city-card").forEach((btn) => {
           btn.addEventListener("click", () => switchCity(btn.getAttribute("data-city")));
         });
       } else {
